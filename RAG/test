@@ -1,0 +1,24 @@
+from rag_pipeline import RAGPipeline
+from llm import get_llm
+from loader import load_pdf
+from splitter import doc_splitter
+from embeddings import get_embeddings
+from vector_store import create_vectorstore,load_vectorstore,get_retriever
+
+pages=load_pdf("notes.pdf")
+chunks=doc_splitter(pages)
+embeddings=get_embeddings()
+vector_store=create_vectorstore(chunks,embeddings)
+retriever=get_retriever(vector_store,k=3)
+llm = get_llm()
+
+rag = RAGPipeline(
+    retriever,
+    llm
+)
+
+answer = rag.answer(
+    "What is an algorithm?"
+)
+
+print(answer)
