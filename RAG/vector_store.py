@@ -2,7 +2,7 @@ from langchain_community.vectorstores import FAISS
 
 def create_vectorstore(chunks,embeddings):
     vector_store=FAISS.from_documents(documents=chunks,embedding=embeddings)
-    vector_store.save_local("faoss_index")
+    vector_store.save_local("faiss_index")
     print("Vector Store has been Created")
     return vector_store
 
