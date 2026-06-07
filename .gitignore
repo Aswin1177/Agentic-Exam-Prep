@@ -8,4 +8,9 @@ __pycache__/
 venv/
 
 faiss_index/
-.vscode/
+.vscode/__pycache__/
+*.pyc
+.env
+uploads/
+vectorstores/
+qpaper_store/

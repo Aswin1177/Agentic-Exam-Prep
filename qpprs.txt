@@ -1,0 +1,474 @@
+03UCEST105122402 
+Page 1 of 4 
+ 
+ 
+ 
+ 
+ 
+ 
+Course Code: UCEST105 
+ 
+Course Name: ALGORITHMIC THINKING WITH PYTHON 
+Max. Marks: 60 
+ 
+ 
+Duration: 2 hours 30 minutes 
+ 
+ 
+ 
+PART A 
+ 
+ 
+(Answer all questions. Each question carries 3 marks) 
+    CO Marks 
+1 
+ 
+You are asked to solve a jigsaw puzzle without a reference picture. How 
+will you solve it using trial and error method? 
+CO-1 
+(3) 
+2 
+ 
+Given the input "12345", write a Python code snippet to check if it is 
+numeric. 
+CO-1 
+(3) 
+3 
+ 
+Draw the flowchart to generate the first ‘n’ numbers in the Fibonacci 
+sequence. 
+CO-2 
+(3) 
+4 
+ 
+Write an algorithm to check whether the input integer is Palindrome or not. 
+CO-2 
+(3) 
+5 
+ 
+Write the output produced by the following code. 
+(i) for count in range(-10,-20,-2) : 
+           print(count, end=" ") 
+(ii) for i in range(10,-1,-2): 
+            print(i) 
+(iii) 2*3**2**2 
+CO-3 
+(3) 
+6 
+ 
+Write a Python program to find the sum of even numbers from N given 
+numbers. 
+CO-3 
+(3) 
+7 
+ 
+What is the motivation for using a randomized approach in problem-
+solving? 
+CO-4 
+(3) 
+8 
+ 
+You are a software engineer working on a security application for a 
+company that handles sensitive user data. The application has a 4-digit 
+numeric password system for authentication. However, due to a system 
+CO-4 
+(3) 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+First Semester B.Tech Degree Regular Examination December 2024 (2024 Scheme)
+Reg No.:_______________
+Name:__________________________
+Downloaded from Ktunotes.in
+03UCEST105122402 
+Page 2 of 4 
+error, a user has forgotten their password. Write an algorithm for 
+recovering the 4-digit numeric password. 
+PART B 
+(Answer any one full question from each module, each question carries 9 marks) 
+Module -1 
+9 
+ 
+a) 
+Explain how backtracking strategy can be applied to solve Sudoku 
+problem? 
+CO-1 
+(5) 
+b) 
+Your college is located in a metropolitan city and you are new to that city. 
+You would like to go out for dinner with your friends. Explain how 
+heuristics approach can be used to find the best restaurant for dinner. 
+CO-1 
+(4) 
+10 
+a) 
+You are asked to develop new campus management software for your 
+college. How will you apply Means-Ends Analysis to develop the software? 
+CO-1 
+(6) 
+b) 
+Given the area of a circle. Write a Python program to calculate the radius of 
+the circle using the math module. 
+CO-1 
+(3) 
+Module -2 
+11 
+a) 
+Write a pseudocode to implement a grading system based on the following 
+conditions. 
+• Marks ≥ 90: Grade A 
+• Marks 80–89: Grade B 
+• Marks 70–79: Grade C 
+• Marks 60-70: Grade D 
+• Marks 50-69: Grade E 
+• Marks < 50 : Grade F 
+• If the difference between the marks and the next multiple of 10 is 
+less that 3, then convert it to next grade. 
+• If the marks are below 50, no need to convert even if the difference 
+is less than 3. 
+CO-2 
+(6) 
+Downloaded from Ktunotes.in
+03UCEST105122402 
+Page 3 of 4 
+b) 
+You are a software developer working on a data analysis tool for a logistics 
+company. The company has a list of delivery times, where each entry 
+represents the time taken (in minutes) for a particular delivery. The team 
+needs to identify delivery times that are divisible by 6 (as they are 
+considered optimal delivery durations) but not divisible by 4 (as they tend 
+to involve more complexity in scheduling). Write an algorithm to print the 
+delivery times that are divisible by 6 but not divisible by 4 from a given set 
+of delivery times. 
+ 
+(3) 
+12 
+a) 
+You are developing a feature for a business analytics tool that processes a 
+list of sales figures for a company. As part of the analytics, the tool must 
+identify the highest and lowest sales figures from the provided data. Write 
+the pseudocode to determine the largest and smallest numbers in a given 
+list of N numbers, ensuring the solution is efficient for real-world 
+applications. 
+CO-2 
+(6) 
+b) 
+Write the pseudocode to calculate the factorial of a given number using a 
+for loop. 
+CO-2 
+(3) 
+Module -3 
+13 
+a) 
+You are working as a software engineer for a financial analysis company. 
+The company uses Fibonacci sequences to model certain financial growth 
+patterns, such as project milestones or revenue projections. You are tasked 
+with developing a tool that generates the first ‘n’ numbers in the Fibonacci 
+sequence to assist in creating projections for clients. You should use 
+recursion to solve it. 
+CO-3 
+(5) 
+b) 
+Write a program that accepts the length of three sides of a triangle as input 
+and determine whether or not the triangle is a right triangle. 
+CO-3 
+(4) 
+14 
+a) 
+You are given two positive integers, a and b. Write a Python program using 
+recursion to find the Least Common Multiple (LCM) of these integers. 
+You are not allowed to directly calculate the LCM formula, but must 
+instead use the relationship between GCD and LCM. 
+CO-3 
+(6) 
+Downloaded from Ktunotes.in
+03UCEST105122402 
+Page 4 of 4 
+Note: For any two positive integers, the product of their LCM and GCD is 
+equal to the product of the two numbers. In other words, 
+𝑙𝑐𝑚(𝑎,𝑏)×𝑔𝑐𝑑(𝑎,𝑏)=𝑎𝑏 
+b) 
+You are working on a text-processing application for a content moderation 
+team. The team needs a feature to analyze user-generated sentences and 
+reorganize their characters for better readability and analysis. Specifically, 
+they want all capital letters to appear first, followed by small letters, then 
+digits, and finally any special characters. Write a Python program to 
+implement this feature, ensuring the reorganized output is displayed as a 
+single word. 
+CO-3 
+(3) 
+Module -4 
+15 
+a) 
+You are working as a financial analyst for a bank. The bank has received a 
+list of loan interest rates from multiple branches, and you need to identify 
+the two lowest rates to recommend the most cost-effective options to 
+customers. The rates are provided as an array of positive integers, and your 
+task is to develop an efficient algorithm using the Divide and Conquer 
+approach to find the sum of the two smallest rates. Explain with a suitable 
+example. 
+CO-4 
+(6) 
+b) 
+Compare and contrast greedy approach and dynamic programming 
+approach. 
+CO-4 
+(3) 
+16 
+a) 
+Explain  memoization and tabulation techniques in dynamic programming 
+for calculating the n-th Fibonacci number 
+CO-4 
+(6) 
+b) 
+Solve the following: 
+You are given an array of positive integers where each integer represents 
+the time taken to complete a task. Develop a greedy algorithm to determine 
+the maximum number of tasks you can complete in a given total time limit. 
+Explain your reasoning behind each step of the solution. 
+CO-4 
+(3) 
+ 
+Downloaded from Ktunotes.in
+ 
+ 
+MODEL QUESTION PAPER 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+FIRST SEMESTER B. TECH DEGREE EXAMINATION, DECEMBER 2024 
+Course Code: UCEST105
+Course Name: Algorithmic Thinking with Python 
+Max. Marks: 60
+  Duration:      2 hours 30 minutes
+ 
+PART A 
+ 
+ 
+Answer all questions. Each question carries 3 marks 
+CO 
+Marks 
+1 
+ 
+How do you use a decomposition strategy to design a menu-driven calculator 
+that supports four basic arithmetic operators - addition, subtraction, 
+multiplication, and division? 
+1 
+(3) 
+2 
+ 
+A mad scientist wishes to make a chain out of plutonium and lead pieces. 
+There is a problem, however. If the scientist places two pieces of plutonium 
+next to each other, BOOM! The question is, in how many ways can the 
+scientist safely construct a chain of length n? 
+4 
+(3) 
+3 
+ 
+Write a case statement that will examine the value of flag and print one of the 
+following messages, based on its value. 
+Flag value 
+Message 
+1
+Hot
+2 
+Luke warm 
+3
+Cold
+Any other value 
+Out of range 
+3 
+(3) 
+4 
+ 
+Draw a flowchart to print the numbers that are divisible by 4 but not by 3 in a 
+list of n positive numbers. 
+3 
+(3) 
+5 
+ 
+Identify and rectify the problem with the following recursive definition to find 
+the greatest common divisor of two positive integers. 
+   ABC ( n , m ) 
+     if n == 2 return m 
+     else return ABC(m , n mod m)  
+4 
+(3) 
+6 
+ 
+Write a recursive procedure to search for a key in a list of n integers. 
+4 
+(3) 
+7 
+ 
+Compare and contrast greedy and dynamic programming strategies. 
+3 
+(3) 
+13 
+Downloaded from KTUNOTES.LIVE
+ 
+8 
+ 
+Give the pseudocode for brute force technique to find the mode of elements 
+in an array. Mode is the value that appears most frequently in the array. 
+3 
+(3) 
+PART B
+Answer any one full question from each module. Each question carries 9 marks 
+ 
+ 
+                                                        Module 1  
+ 
+ 
+9 
+ 
+Walk through the six problem-solving steps to find the largest number out of 
+three numbers. 
+1 
+(9) 
+10 
+a) Your professor has given you an assignment on “Algorithmic thinking” to be 
+submitted by this Wednesday. How do you employ means-end analysis to 
+devise a strategy for completing your assignment before the deadline? 
+2 
+(5) 
+b)
+Name two current problems in your life that might be solved through a 
+heuristic approach. Explain why each of these problems can be solved using 
+heuristics. 
+1 
+(4) 
+ 
+ 
+                                                        Module 2 
+ 
+ 
+11 
+a) Mr. Shyam, a history professor, would like to know the percentage increase 
+in the population of our country per decade given the first decade and the last 
+decade. Other given data include the population at the beginning of each 
+decade. Draw a flowchart for determining the percentage increase in the 
+population. 
+3 
+(6) 
+b)
+Draw a flowchart to find the average mileage of a car in kilometers per litre 
+after six fill-ups at petrol pumps. Input data include the number of litres of 
+diesel, the starting odometer reading, and the odometer reading at each fillup.
+3 
+(3) 
+12 
+a) A standard science experiment is to drop a ball and see how high it bounces. 
+Once the “bounciness” of the ball has been determined, the ratio gives a 
+bounciness index. For example, if a ball dropped from a height of 10 feet 
+bounces 6 feet high, the index is 0.6, and the total distance traveled by the ball 
+is 16 feet after one bounce. If the ball were to continue bouncing, the distance 
+after two bounces would be 10 ft + 6 ft + 6 ft + 3.6 ft = 25.6 ft. Note that the 
+distance traveled for each successive bounce is the distance to the floor plus 
+0.6 of that distance as the ball comes back up. Write an algorithm that lets the 
+user enter the initial height of the ball, bounciness index and the number of 
+times the ball is allowed to continue bouncing. Output should be the total 
+distance traveled by the ball. 
+3 
+(6) 
+14 
+Downloaded from KTUNOTES.LIVE
+ 
+b)
+Light travels at 3 × 108 meters per second. A light-year is the distance a light 
+beam travels in one year. Write an algorithm that inputs a large distance value 
+(in meters) and displays it in light-years. 
+3 
+(3) 
+ 
+ 
+                                                        Module 3 
+ 
+ 
+13 
+a) Write a recursive function to find an array's minimum and maximum 
+elements. Your method should return a tuple (a, b), where a is the minimum 
+element and b is the maximum. 
+4 
+(5) 
+b)
+Write a program to input a matrix and determine its type: lower triangular, 
+upper triangular, or diagonal. 
+4 
+(4) 
+14 
+a) Write a program to read N words and display them in the increasing order of 
+their lengths. The length of each word is also to be displayed. 
+4 
+(6) 
+b)
+There are 500 light bulbs (numbered 1 to 500) arranged in a row. Initially, 
+they are all OFF. Starting with bulb 2, all even numbered bulbs are turned 
+ON. Next, starting with bulb 3, and visiting every third bulb, it is turned ON 
+if it is OFF, and it is turned OFF if it is ON. This procedure is repeated for 
+every fourth bulb, then every fifth bulb, and so on up to the 500th bulb. Devise 
+an algorithm to determine which bulbs glow at the end of the above exercise.
+4 
+(3) 
+ 
+ 
+                                                        Module 4 
+ 
+ 
+15 
+a) Studies show that the capacity of an empty human stomach is 1.5 litres on 
+average. Give a greedy algorithm to output an efficient lunch menu 
+maximizing the total nutritional value. The available items along with their 
+nutritional values are tabulated below: 
+Recipe 
+Available 
+quantity 
+Nutritional 
+value 
+Cooked rice
+2.5 cups 
+800 calories
+Sambar 
+1.5 cups 
+140 calories
+Potato curry
+0.5 cup
+50 calories
+3 
+(6) 
+15 
+Downloaded from KTUNOTES.LIVE
+ 
+Fish fry 
+0.5 cup 
+200 calories
+Buttermilk 
+1 cup 
+98 calories 
+Payasam 
+2 cups 
+300 calories
+You may assume that 1 cup is equivalent to 250ml. 
+b)
+How are recursion and dynamic programming (DP) related? Is it possible to 
+construct a DP version for all recursive solutions? 
+2 
+(3) 
+16 
+a) Write a Python program for a random walk simulation in a 2D grid starting 
+from the origin (0, 0). At each step, randomly move up, down, left, or right. 
+Print the final position after 10 steps. 
+3 
+(4) 
+b)
+Use divide and conquer to find the majority element in an array, where the 
+majority element appears more than n/2 times. Divide the array into two 
+halves, find the majority element in each half, and combine the results to 
+identify if there is a majority element in the entire array. 
+2 
+(5) 
+***** 
+ 
+ 
+ 
+ 
+ 
+ 
+16 
+Downloaded from KTUNOTES.LIVE

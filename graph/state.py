@@ -2,8 +2,13 @@ from typing import TypedDict
 
 class ExamState(TypedDict):
 
-    query: str
+    pyq_text: str
+
+    expanded_questions: str
+
+    important_topics: str
 
     context: str
 
-    answer: str
+    focused_notes: str
+
