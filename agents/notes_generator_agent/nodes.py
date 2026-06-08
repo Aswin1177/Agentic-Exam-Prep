@@ -1,22 +1,45 @@
+from guardrails.guardrails import require_keys,validate_output,retry
 
 def create_retrieve_node(retriever):
 
+    @require_keys("important_topics")
+    @validate_output("context")
     def retrieve_node(state):
+
         print("EXECUTING AGENT 2 - Notes Generation")
-        topics = state["important_topics"].split("\n")
-        all_docs = []
+
+        topics=state["important_topics"].split("\n")
+
+        all_docs=[]
+
         for topic in topics:
+
             if topic.strip():
-                docs = retriever.invoke(topic)
+
+                docs=retriever.invoke(topic)
+
                 all_docs.extend(docs)
-        context = "\n\n".join(doc.page_content for doc in all_docs)
-        return {"context": context[:5000]}
+
+        context="\n\n".join(
+            doc.page_content
+            for doc in all_docs
+        )
+
+        return {
+            "context":context[:5000]
+        }
+
     return retrieve_node
 
+
 def create_answer_node(llm):
+
+    @require_keys("important_topics","context")
+    @validate_output("focused_notes")
+    @retry()
     def answer_node(state):
 
-        prompt = f"""
+        prompt=f"""
         You are an expert exam preparation assistant.
 
         Important Topics Identified from Previous Year Question Papers:
@@ -33,130 +56,45 @@ def create_answer_node(llm):
 
         1. Cover only the important topics identified from PYQs.
         2. Prioritize concepts that appear frequently in exams.
-        3. Include:
+
+        Include:
 
         - Definitions
         - Key Points
-        - Important Features / Characteristics
-        - Advantages and Disadvantages (if applicable)
-        - Important Diagrams (describe where a diagram should be drawn)
+        - Important Features
+        - Advantages and Disadvantages
+        - Important Diagrams
         - Common Exam Questions
         - 5-Mark Answer
         - 10-Mark Answer
 
-        4. Compare the important topics from PYQs against the retrieved notes context.
+        Compare PYQ topics against notes.
 
-        5. Create a dedicated section titled:
+        Create:
 
         MISSING IMPORTANT TOPICS
 
-        List all important topics that appear in PYQs but are not adequately covered in the notes.
-
-        6. Create a dedicated section titled:
-
         PARTIALLY COVERED TOPICS
 
-        List important topics that appear in the notes but need additional study.
-
-        7. For every missing topic provide:
+        For every missing topic provide:
         - Topic Name
-        - Why it is important for exams
-        - Suggested areas to study
+        - Why Important
+        - Suggested Areas To Study
 
-        8. Keep the notes concise, revision-oriented, and exam-focused.
-
-        9. Use proper headings and bullet points.
-
-        10. Do not mention that the content was generated from context.
-
-        Output Format Rules:
-
-        1. Every topic MUST start on a new line.
-
-        Example:
-
-        TRIAL AND ERROR METHOD
-
-        Definition:
-
-        The trial and error method is a ...
-
-        Key Points:
-
-        - Involves a lot of trial and..
-        - Can be Time-Consuming ...
-
-        Important Features:
-
-        - Iterqative aproach to finding ...
-
-        Advantages:
-        
-        ...
-        [small letters only first letter of first word can be capital]
-
-        Disadvantages:
-        
-        ...
-        [small letters only first letter of first word can be capital]
-
-        Common Exam Questions:
-        ...
-        [small letters only first letter of first word can be capital]
-
-        5-Mark Answer:
-        ...
-        [small letters only first letter of first word can be capital]
-
-        10-Mark Answer:
-        ...
-        [small letters only first letter of first word can be capital]
-        
-        2. Do NOT write topic names as bullet points.
-
-        WRONG:
-
-        • Trial and Error Method
-
-        RIGHT:
-
-        TRIAL AND ERROR METHOD
-
-        3. Leave one blank line before and after every topic heading.
-
-        4. Every topic heading must be UPPERCASE.
-
-        5. Use ONLY these section labels:
-
-        Definition:
-        Key Points:
-        Important Features:
-        Advantages:
-        Disadvantages:
-        Common Exam Questions:
-        5-Mark Answer:
-        10-Mark Answer:
-
-        6. At the end create:
-
-        MISSING IMPORTANT TOPICS
-
-        ...
-
-        PARTIALLY COVERED TOPICS
-
-        ...
-
-        7. Never merge multiple topics under one heading.
-
-        8. Do not use markdown.
+        Do not use markdown.
         """
 
-        response = llm.invoke(prompt)
+        response=llm.invoke(prompt)
+
+        notes=response.content
+
+        if len(notes)<500:
+            raise ValueError(
+                "Generated notes appear incomplete"
+            )
 
         return {
-            "focused_notes": response.content
+            "focused_notes":notes
         }
 
     return answer_node
-

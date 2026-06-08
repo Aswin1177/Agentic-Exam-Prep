@@ -1,5 +1,10 @@
+from guardrails.guardrails import require_keys,validate_output,retry
+
 def create_pattern_analysis_node(llm):
 
+    @require_keys("reference_paper")
+    @validate_output("question_patterns")
+    @retry()
     def pattern_analysis_node(state):
 
         print("Executing Agent 4 - Mock Examiner")
@@ -23,8 +28,15 @@ def create_pattern_analysis_node(llm):
 
         response=llm.invoke(prompt)
 
+        patterns=response.content
+
+        if len(patterns)<100:
+            raise ValueError(
+                "Question pattern analysis appears incomplete"
+            )
+
         return {
-            "question_patterns":response.content
+            "question_patterns":patterns
         }
 
     return pattern_analysis_node
@@ -32,6 +44,13 @@ def create_pattern_analysis_node(llm):
 
 def create_mock_generator_node(llm):
 
+    @require_keys(
+        "question_patterns",
+        "important_topics",
+        "expanded_questions"
+    )
+    @validate_output("draft_mock_test")
+    @retry()
     def mock_generator_node(state):
 
         prompt=f"""
@@ -94,14 +113,28 @@ def create_mock_generator_node(llm):
 
         response=llm.invoke(prompt)
 
+        draft=response.content
+
+        if len(draft)<300:
+            raise ValueError(
+                "Generated mock paper appears incomplete"
+            )
+
         return {
-            "draft_mock_test":response.content
+            "draft_mock_test":draft
         }
 
     return mock_generator_node
 
+
 def create_mock_formatter_node(llm):
 
+    @require_keys(
+        "reference_paper",
+        "draft_mock_test"
+    )
+    @validate_output("mock_test")
+    @retry()
     def mock_formatter_node(state):
 
         prompt=f"""
@@ -152,8 +185,15 @@ def create_mock_formatter_node(llm):
 
         response=llm.invoke(prompt)
 
+        paper=response.content
+
+        if len(paper)<500:
+            raise ValueError(
+                "Final mock paper appears incomplete"
+            )
+
         return {
-            "mock_test":response.content
+            "mock_test":paper
         }
 
     return mock_formatter_node

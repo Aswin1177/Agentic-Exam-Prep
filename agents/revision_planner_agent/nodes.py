@@ -1,4 +1,5 @@
 from RAG.loader import load_printed_pdf
+from guardrails.guardrails import require_keys,validate_output,retry
 
 def create_syllabus_load_node():
 
@@ -17,6 +18,9 @@ def create_syllabus_load_node():
 
 def create_syllabus_analyzer_node(llm):
 
+    @require_keys("syllabus_text")
+    @validate_output("syllabus_summary")
+    @retry()
     def syllabus_analyzer_node(state):
 
         prompt=f"""
@@ -41,8 +45,15 @@ def create_syllabus_analyzer_node(llm):
 
         response=llm.invoke(prompt)
 
+        summary=response.content
+
+        if len(summary)<100:
+            raise ValueError(
+                "Syllabus summary appears incomplete"
+            )
+
         return {
-            "syllabus_summary":response.content
+            "syllabus_summary":summary
         }
 
     return syllabus_analyzer_node
@@ -50,6 +61,14 @@ def create_syllabus_analyzer_node(llm):
 
 def create_revision_planner_agent_node(llm):
 
+    @require_keys(
+        "important_topics",
+        "syllabus_summary",
+        "days_to_exam",
+        "hours_per_day"
+    )
+    @validate_output("revision_plan")
+    @retry()
     def revision_planner_agent_node(state):
 
         prompt=f"""
@@ -65,7 +84,7 @@ def create_revision_planner_agent_node(llm):
 
         {state["days_to_exam"]}
 
-        Study Hours Per Day:
+        Total Study Hours Per Day:
 
         {state["hours_per_day"]}
 
@@ -89,8 +108,15 @@ def create_revision_planner_agent_node(llm):
 
         response=llm.invoke(prompt)
 
+        plan=response.content
+
+        if len(plan)<200:
+            raise ValueError(
+                "Revision plan appears incomplete"
+            )
+
         return {
-            "revision_plan":response.content
+            "revision_plan":plan
         }
 
     return revision_planner_agent_node

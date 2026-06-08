@@ -1,3 +1,6 @@
+import warnings
+
+warnings.filterwarnings("ignore")
 import streamlit as st
 import os
 from graph.notes_workflow import run_notes_workflow
