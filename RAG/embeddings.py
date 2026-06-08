@@ -1,4 +1,3 @@
-
 from langchain_huggingface import HuggingFaceEmbeddings
 
 def get_embeddings():
