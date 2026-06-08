@@ -2,7 +2,7 @@
 def create_retrieve_node(retriever):
 
     def retrieve_node(state):
-
+        print("EXECUTING AGENT 2 - Notes Generation")
         topics = state["important_topics"].split("\n")
         all_docs = []
         for topic in topics:
@@ -14,7 +14,6 @@ def create_retrieve_node(retriever):
     return retrieve_node
 
 def create_answer_node(llm):
-
     def answer_node(state):
 
         prompt = f"""
@@ -70,25 +69,87 @@ def create_answer_node(llm):
 
         10. Do not mention that the content was generated from context.
 
-        Output Format:
+        Output Format Rules:
 
-        IMPORTANT TOPICS
+        1. Every topic MUST start on a new line.
 
-        DEFINITIONS
+        Example:
 
-        KEY POINTS
+        TRIAL AND ERROR METHOD
 
-        IMPORTANT FEATURES
+        Definition:
 
-        COMMON EXAM QUESTIONS
+        The trial and error method is a ...
 
-        5-MARK ANSWERS
+        Key Points:
 
-        10-MARK ANSWERS
+        - Involves a lot of trial and..
+        - Can be Time-Consuming ...
+
+        Important Features:
+
+        - Iterqative aproach to finding ...
+
+        Advantages:
+        
+        ...
+        [small letters only first letter of first word can be capital]
+
+        Disadvantages:
+        
+        ...
+        [small letters only first letter of first word can be capital]
+
+        Common Exam Questions:
+        ...
+        [small letters only first letter of first word can be capital]
+
+        5-Mark Answer:
+        ...
+        [small letters only first letter of first word can be capital]
+
+        10-Mark Answer:
+        ...
+        [small letters only first letter of first word can be capital]
+        
+        2. Do NOT write topic names as bullet points.
+
+        WRONG:
+
+        • Trial and Error Method
+
+        RIGHT:
+
+        TRIAL AND ERROR METHOD
+
+        3. Leave one blank line before and after every topic heading.
+
+        4. Every topic heading must be UPPERCASE.
+
+        5. Use ONLY these section labels:
+
+        Definition:
+        Key Points:
+        Important Features:
+        Advantages:
+        Disadvantages:
+        Common Exam Questions:
+        5-Mark Answer:
+        10-Mark Answer:
+
+        6. At the end create:
 
         MISSING IMPORTANT TOPICS
 
+        ...
+
         PARTIALLY COVERED TOPICS
+
+        ...
+
+        7. Never merge multiple topics under one heading.
+
+        8. Do not use markdown.
         """
 
         response = llm.invoke(prompt)
@@ -98,3 +159,4 @@ def create_answer_node(llm):
         }
 
     return answer_node
+

@@ -1,14 +1,24 @@
 from typing import TypedDict
 
-class ExamState(TypedDict):
+class ExamState(TypedDict,total=False):
 
-    pyq_text: str
+    pyq_text:str
+    expanded_questions:str
+    important_topics:str
 
-    expanded_questions: str
+    context:str
+    focused_notes:str
 
-    important_topics: str
+    syllabus_file:str
+    syllabus_text:str
+    syllabus_summary:str
 
-    context: str
+    days_to_exam:int
+    hours_per_day:int
 
-    focused_notes: str
+    revision_plan:str
 
+    reference_paper:str
+    question_patterns:str
+    draft_mock_test:str
+    mock_test:str

@@ -1,8 +1,7 @@
-from agents.pyq_intelligence.extractor import pyq_retriever
-
 def create_pyq_load_node(pyq_content):
 
     def pyq_load_node(state):
+        print("EXECUTING AGENT 1 - Previous Year QPaper Analyser")
         return {
             "pyq_text": pyq_content
         }
