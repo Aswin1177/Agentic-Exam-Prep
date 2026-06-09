@@ -84,26 +84,124 @@ def create_revision_planner_agent_node(llm):
 
         {state["days_to_exam"]}
 
-        Total Study Hours Per Day:
+        Available Study Hours Per Day:
 
         {state["hours_per_day"]}
 
+        Task:
+
+        Analyze the syllabus and PYQ trends and create a revision plan focused on maximizing exam performance.
+
         Create:
 
-        1. High Priority Topics
-        2. Medium Priority Topics
-        3. Low Priority Topics
+        1. HIGH PRIORITY TOPICS
+        2. MEDIUM PRIORITY TOPICS
+        3. LOW PRIORITY TOPICS
 
-        4. Day-wise hourly revision schedule
+        For each topic provide:
 
-        5. Final revision phase
+        - Topic Name
+        - Study Time
+        - Why Important
 
         Prioritize:
-        - Topics appearing in PYQs
-        - Topics emphasized in syllabus
-        - High weightage modules
 
-        Do not use markdown.
+        - Frequently appearing PYQ topics
+        - High-weightage syllabus topics
+        - Core concepts that support multiple topics
+        - Topics that are likely to appear in the examination
+
+        Rules:
+
+        1. Do NOT create a timetable.
+        2. Do NOT create day-wise schedules.
+        3. Do NOT create hourly slots.
+        4. Do NOT generate dates.
+        5. Do NOT generate calendars.
+        6. Do NOT use markdown.
+        7. Do NOT use:
+        *, **, #, ##, ###, +, bullet symbols.
+        8. Do NOT write text in ALL CAPITAL LETTERS.
+        9. Use normal sentence case.
+        10. Keep explanations concise and exam-oriented.
+        11. Allocate more study time to high-priority topics.
+        12. Allocate less study time to low-priority topics.
+        13. Total study time should be realistic based on:
+
+            Days Until Exam × Available Study Hours Per Day
+
+        14. Display study time only as:
+
+            8 Hours
+            5 Hours
+            2 Hours
+
+        15. Do NOT write:
+
+            Recommended Study Hours
+            Suggested Hours
+            Estimated Hours
+
+        16. Every topic must contain:
+            - Topic Name
+            - Study Time
+            - Why Important
+
+        Output Format Example:
+
+        High Priority Topics:
+        ...
+        Medium Priority Topics
+        ...
+        Low Priority Topics
+        ...
+        
+        Day 1
+        Dynamic Programming - 8 Hours
+
+        Why Important:
+        Frequently asked in PYQs and carries high exam weightage.
+
+        Greedy Algorithm - 5 Hours
+
+        Why Important:
+        Core algorithm design topic and commonly appears in university examinations.
+
+        Day 2
+        Backtracking - 3 Hours
+
+        Why Important:
+        Frequently used for problem-solving questions.
+
+        Randomized Algorithms - 1 Hour
+
+        Why Important:
+        Less frequently asked but useful for conceptual understanding.
+
+        After the priority lists create:
+
+        Final Revision Phase
+
+        Last Week Before Exam
+
+        - Topics that must be revised during the final week.
+
+        Last 3 Days Before Exam
+
+        - Topics that must be revised during the final three days.
+
+        Day Before Exam
+
+        - Topics that should receive a quick revision.
+
+        Focus on:
+        - High-priority topics
+        - Frequently repeated PYQ concepts
+        - Formulae
+        - Algorithms
+        - Important definitions
+
+        Return only the final revision plan.
         """
 
         response=llm.invoke(prompt)

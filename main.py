@@ -1,12 +1,15 @@
 import warnings
-
 warnings.filterwarnings("ignore")
 import streamlit as st
 import os
+os.makedirs("uploads", exist_ok=True)
+os.makedirs("vectorstores", exist_ok=True)
 from graph.notes_workflow import run_notes_workflow
 from graph.revision_workflow import run_revision_workflow
 from graph.mock_workflow import run_mock_workflow
 from pdf_generator import create_notes_pdf,create_revision_pdf,create_mock_pdf
+from dotenv import load_dotenv
+load_dotenv()
 
 st.title("Exam Preperation AI")
 

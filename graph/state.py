@@ -4,6 +4,7 @@ class ExamState(TypedDict,total=False):
 
     pyq_text:str
     expanded_questions:str
+    topic_frequency:str
     important_topics:str
 
     context:str
@@ -19,6 +20,7 @@ class ExamState(TypedDict,total=False):
     revision_plan:str
 
     reference_paper:str
+    paper_stats:str
     question_patterns:str
     draft_mock_test:str
     mock_test:str

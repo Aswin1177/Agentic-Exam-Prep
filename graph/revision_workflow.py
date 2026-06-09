@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph,START,END
 from .state import ExamState
 
-from agents.pyq_analyzer_agent.nodes import (create_pyq_load_node,
+from agents.pyq_analyzer_agent.nodes import (create_topic_frequency_node,create_pyq_load_node,
     create_question_expansion_node, create_topic_analysis_node)
 
 from agents.pyq_analyzer_agent.extractor import pyq_retriever
@@ -22,6 +22,7 @@ def run_revision_workflow(qppr_files,syllabus_file,days_to_exam,hours_per_day):
 
     graph_builder.add_node("pyq_retriever",create_pyq_load_node(pyq_content))
     graph_builder.add_node("q_expansion",create_question_expansion_node(llm))
+    graph_builder.add_node("frequency_analysis",create_topic_frequency_node())
     graph_builder.add_node("topic_analysis",create_topic_analysis_node(llm))
 
     graph_builder.add_node("load_syllabus",create_syllabus_load_node())
@@ -34,8 +35,8 @@ def run_revision_workflow(qppr_files,syllabus_file,days_to_exam,hours_per_day):
 
     graph_builder.add_edge(START,"pyq_retriever")
     graph_builder.add_edge("pyq_retriever","q_expansion")
-    graph_builder.add_edge("q_expansion","topic_analysis")
-
+    graph_builder.add_edge("q_expansion","frequency_analysis")
+    graph_builder.add_edge("frequency_analysis","topic_analysis")
     graph_builder.add_edge("topic_analysis","load_syllabus")
     graph_builder.add_edge("load_syllabus","analyze_syllabus")
     graph_builder.add_edge("analyze_syllabus","revision_planner_agent")
