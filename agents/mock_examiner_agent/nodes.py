@@ -158,6 +158,50 @@ def create_mock_generator_node(llm):
     return mock_generator_node
 
 
+def create_mock_validation_node(llm):
+
+    @require_keys(
+        "draft_mock_test",
+        "question_patterns"
+    )
+    @validate_output("mock_validation_notes")
+    @retry()
+    def mock_validation_node(state):
+
+        prompt=f"""
+        You are reviewing a draft mock examination question bank.
+
+        Extracted Question Pattern:
+
+        {state["question_patterns"]}
+
+        Draft Question Bank:
+
+        {state["draft_mock_test"]}
+
+        Review the draft and provide a concise validation report that covers:
+        - Section coverage
+        - Question balance
+        - Difficulty consistency
+        - Internal choice suitability
+
+        Return only the validation notes.
+        """
+
+        response=llm.invoke(prompt)
+
+        validation_notes=response.content.strip()
+
+        if len(validation_notes)<50:
+            raise ValueError(
+                "Mock validation notes appear too short"
+            )
+
+        return {"mock_validation_notes":validation_notes}
+
+    return mock_validation_node
+
+
 def create_mock_formatter_node(llm):
 
     @require_keys(
