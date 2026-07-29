@@ -23,4 +23,5 @@ class ExamState(TypedDict,total=False):
     paper_stats:str
     question_patterns:str
     draft_mock_test:str
+    mock_validation_notes:str
     mock_test:str
